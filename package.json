@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "lint": "next lint",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix src/",
     "test": "jest --passWithNoTests",
     "test:watch": "yarn test --watch",
     "test:staged": "yarn test --findRelatedTests $(git status --short | awk '{print $2}')",
@@ -40,6 +40,9 @@
     "jest-environment-jsdom": "^29.5.0",
     "lint-staged": "^13.2.1",
     "ts-jest": "^29.1.0",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.2"
   }
 }
