@@ -1,0 +1,6 @@
+{
+  "*.{ts, tsx, css}": [
+    "eslint src/** --fix",
+    "yarn test:staged"
+  ]
+}

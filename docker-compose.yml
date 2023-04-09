@@ -1,0 +1,21 @@
+version: "3.7"
+
+networks:
+  kong-fc:
+    external: true
+  
+services:
+  clean-react:
+    build: 
+      context: .
+      dockerfile: ./.docker/dockerfiles/Dockerfile
+    container_name: clean-react
+    # entrypoint: sh ./.docker/entrypoint.sh
+    restart: always
+    tty: true
+    networks:
+      - kong-fc
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/clean-react/app
