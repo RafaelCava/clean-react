@@ -7,6 +7,6 @@ WORKDIR /usr/clean-react/app
 
 USER node
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD [ "tail", "-f", "/dev/null" ]

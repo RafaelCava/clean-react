@@ -24,6 +24,7 @@
         "jest"
     ],
     "rules": {
-        "@typescript-eslint/no-namespace": "off"
+      "@typescript-eslint/no-namespace": "off",
+      "react/prop-types": "off"
     }
 }
