@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: ./.docker/dockerfiles/Dockerfile
     container_name: clean-react
-    # entrypoint: sh ./.docker/entrypoint.sh
+    entrypoint: sh ./.docker/entrypoint.sh
     restart: always
     tty: true
     networks:

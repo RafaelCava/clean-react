@@ -4,4 +4,4 @@ yarn install
 
 yarn husky
 
-yarn start
+yarn dev
