@@ -25,6 +25,8 @@
     ],
     "rules": {
       "@typescript-eslint/no-namespace": "off",
-      "react/prop-types": "off"
+      "react/prop-types": "off",
+      "@typescript-eslint/consistent-type-definitions": "off",
+      "@typescript-eslint/strict-boolean-expressions": "off"
     }
 }
