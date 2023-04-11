@@ -13,4 +13,12 @@ describe('Login', () => {
     const errorWrap = sut.getByTestId('error-wrap')
     expect(errorWrap.childElementCount).toBe(0)
   })
+
+  it('should start with initial state', () => {
+    const sut = render(<Login />)
+    const errorWrap = sut.getByTestId('error-wrap')
+    expect(errorWrap.childElementCount).toBe(0)
+    const submitButton = sut.getByTestId('submit') as HTMLButtonElement
+    expect(submitButton.disabled).toBe(true)
+  })
 })
