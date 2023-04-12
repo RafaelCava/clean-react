@@ -4,7 +4,7 @@ import React from 'react'
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
 
 class ValidationStub implements Validation {
-  validate (input: object): string | null {
+  validate (fieldName: string, fieldValue: string): string | null {
     return null
   }
 }
