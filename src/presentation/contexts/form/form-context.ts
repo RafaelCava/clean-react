@@ -3,20 +3,23 @@ import { createContext } from 'react'
 type FormContextProps = {
   state: {
     isLoading: boolean
-  }
-  errorState: {
+    emailError: string
+    passwordError: string
+    mainError: string
     email: string
     password: string
-    main: string
   }
+
+  setState: any
 }
 export default createContext<FormContextProps>({
   state: {
-    isLoading: false
+    isLoading: false,
+    emailError: 'Campo obrigatório',
+    passwordError: 'Campo obrigatório',
+    mainError: '',
+    email: '',
+    password: ''
   },
-  errorState: {
-    email: 'Campo obrigatório',
-    password: 'Campo obrigatório',
-    main: ''
-  }
+  setState: () => {}
 })

@@ -1,10 +1,17 @@
-import { Login } from '@/presentation/pages'
+import Login from '@/presentation/pages/login/login'
+import { type Validation } from '@/presentation/protocols/validation'
 import React from 'react'
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom'
 
+class ValidationStub implements Validation {
+  validate (input: object): string | null {
+    return null
+  }
+}
+
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/login' Component={Login} />
+    <Route path='/login' element={<Login validation={new ValidationStub()} />} />
   )
 )
 
