@@ -15,7 +15,7 @@ type FormContextProps = {
 export default createContext<FormContextProps>({
   state: {
     isLoading: false,
-    emailError: 'Campo obrigatório',
+    emailError: '',
     passwordError: 'Campo obrigatório',
     mainError: '',
     email: '',
