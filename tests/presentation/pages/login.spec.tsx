@@ -5,6 +5,7 @@ import 'jest-localstorage-mock'
 import { Login } from '@/presentation/pages'
 import { ValidationStub, AuthenticationSpy } from '@/tests/presentation/mocks'
 import { InvalidCredentialsError } from '@/domain/errors'
+import { BrowserRouter } from 'react-router-dom'
 
 type SutTypes = {
   sut: RenderResult
@@ -15,7 +16,11 @@ const makeSut = (error: string = ''): SutTypes => {
   const validationStub = new ValidationStub()
   validationStub.errorMessage = error
   const authenticationSpy = new AuthenticationSpy()
-  const sut = render(<Login validation={validationStub} authentication={authenticationSpy} />)
+  const sut = render(
+    <BrowserRouter>
+      <Login validation={validationStub} authentication={authenticationSpy} />
+    </BrowserRouter>
+  )
   return {
     sut,
     authenticationSpy
@@ -176,5 +181,13 @@ describe('Login', () => {
     simulateValidSubmit(sut)
     await waitFor(() => sut.getByTestId('form'))
     expect(localStorage.setItem).toHaveBeenCalledWith('accessToken', authenticationSpy.authenticationResult.accessToken)
+  })
+
+  it('should go to signup page', async () => {
+    const { sut } = makeSut()
+    const register = sut.getByTestId('signup')
+    expect(window.location.pathname).toBe('/')
+    fireEvent.click(register)
+    expect(window.location.pathname).toBe('/signup')
   })
 })
