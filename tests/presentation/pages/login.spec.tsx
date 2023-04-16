@@ -136,4 +136,20 @@ describe('Login', () => {
     simulateValidSubmit(sut)
     expect(authenticationSpy.callsCount).toBe(1)
   })
+
+  it('should not call Authentication if email are provided and form is invalid', () => {
+    const error = faker.random.words(5)
+    const { sut, authenticationSpy } = makeSut(error)
+    populateEmailField(sut)
+    fireEvent.submit(sut.getByTestId('form'))
+    expect(authenticationSpy.callsCount).toBe(0)
+  })
+
+  it('should not call Authentication if password are provided and form is invalid', () => {
+    const error = faker.random.words(5)
+    const { sut, authenticationSpy } = makeSut(error)
+    populatePasswordField(sut)
+    fireEvent.submit(sut.getByTestId('form'))
+    expect(authenticationSpy.callsCount).toBe(0)
+  })
 })
