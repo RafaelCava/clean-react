@@ -1,6 +1,7 @@
 import React from 'react'
 import { faker } from '@faker-js/faker'
 import { type RenderResult, render, cleanup, fireEvent, waitFor } from '@testing-library/react'
+import 'jest-localstorage-mock'
 import { Login } from '@/presentation/pages'
 import { ValidationStub, AuthenticationSpy } from '@/tests/presentation/mocks'
 import { InvalidCredentialsError } from '@/domain/errors'
@@ -44,6 +45,10 @@ const populatePasswordField = (sut: RenderResult, password = faker.internet.pass
 
 describe('Login', () => {
   afterEach(cleanup)
+
+  beforeEach(() => {
+    localStorage.clear()
+  })
   it('should render', () => {
     const { sut } = makeSut()
     expect(sut).toBeTruthy()
@@ -164,5 +169,12 @@ describe('Login', () => {
     const mainError = sut.getByTestId('main-error')
     expect(mainError.textContent).toBe(error.message)
     expect(errorWrap.childElementCount).toBe(1)
+  })
+
+  it('should add accessToken to localStorage on success', async () => {
+    const { sut, authenticationSpy } = makeSut()
+    simulateValidSubmit(sut)
+    await waitFor(() => sut.getByTestId('form'))
+    expect(localStorage.setItem).toHaveBeenCalledWith('accessToken', authenticationSpy.authenticationResult.accessToken)
   })
 })
