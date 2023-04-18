@@ -48,11 +48,7 @@
 				"sibiraj-s.vscode-scss-formatter",
 				"miguelsolorio.symbols",
 				"RobbOwen.synthwave-vscode",
-				"dsznajder.es7-react-js-snippets",
-				"Orta.vscode-jest",
-				"firsttris.vscode-jest-runner",
-				"andys8.jest-snippets",
-				"kavod-io.vscode-jest-test-adapter"
+				"dsznajder.es7-react-js-snippets"
 			]
 		}
 	}

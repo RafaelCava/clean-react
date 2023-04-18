@@ -181,12 +181,12 @@ describe('Login', () => {
     simulateValidSubmit(sut)
     await waitFor(() => sut.getByTestId('form'))
     expect(localStorage.setItem).toHaveBeenCalledWith('accessToken', authenticationSpy.authenticationResult.accessToken)
+    expect(window.location.pathname).toBe('/')
   })
 
   it('should go to signup page', async () => {
     const { sut } = makeSut()
     const register = sut.getByTestId('signup')
-    expect(window.location.pathname).toBe('/')
     fireEvent.click(register)
     expect(window.location.pathname).toBe('/signup')
   })
