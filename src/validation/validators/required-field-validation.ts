@@ -1,7 +1,4 @@
-interface FieldValidation {
-  field: string
-  validate: (value: string) => Error | null
-}
+import { type FieldValidation } from '../protocols'
 
 export class RequiredFieldValidation implements FieldValidation {
   constructor (readonly field: string) {}

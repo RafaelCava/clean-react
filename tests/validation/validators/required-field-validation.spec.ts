@@ -1,4 +1,4 @@
-import { RequiredFieldValidation } from '@/validation/required-field/required-field-validation'
+import { RequiredFieldValidation } from '@/validation/validators'
 
 const makeSut = (): RequiredFieldValidation => new RequiredFieldValidation('any_field')
 
