@@ -8,4 +8,10 @@ describe('Required field validation', () => {
     const error = sut.validate('field', '')
     expect(error).toBe('Campo obrigatório')
   })
+
+  it('should return null on succeeds', () => {
+    const sut = makeSut()
+    const error = sut.validate('field', 'any_value')
+    expect(error).toBeNull()
+  })
 })
