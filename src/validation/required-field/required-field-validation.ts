@@ -1,7 +1,11 @@
-import { type Validation } from '@/presentation/protocols'
+interface FieldValidation {
+  field: string
+  validate: (value: string) => Error | null
+}
 
-export class RequiredFieldValidation implements Validation {
-  validate (fieldName: string, fieldValue: string): string | null {
-    return fieldValue ? null : 'Campo obrigatório'
+export class RequiredFieldValidation implements FieldValidation {
+  constructor (readonly field: string) {}
+  validate (value: string): Error | null {
+    return value ? null : new Error('Campo obrigatório')
   }
 }
