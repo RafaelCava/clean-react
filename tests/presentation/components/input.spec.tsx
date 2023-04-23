@@ -8,4 +8,11 @@ describe('Input Component', () => {
     const input = getByTestId('field') as HTMLInputElement
     expect(input.readOnly).toBe(true)
   })
+
+  it('should remove readOnly on focus', () => {
+    const { getByTestId } = render(<Input name="field" />)
+    const input = getByTestId('field') as HTMLInputElement
+    input.focus()
+    expect(input.readOnly).toBe(false)
+  })
 })
