@@ -10,7 +10,7 @@ type SutTypes = {
 
 const makeSut = (fieldDefault = faker.database.column()): SutTypes => {
   const fieldValidationSpy = new FieldValidationSpy(fieldDefault)
-  const sut = new ValidationComposite([fieldValidationSpy])
+  const sut = ValidationComposite.build([fieldValidationSpy])
   return {
     sut,
     fieldValidationSpy,
