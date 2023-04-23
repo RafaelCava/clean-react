@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix src/",
-    "test": "jest --passWithNoTests --no-cache --runInBand",
+    "test": "jest --passWithNoTests --no-cache --runInBand --noStackTrace --silent",
+    "test:verbose": "jest --passWithNoTests --no-cache --runInBand",
     "test:watch": "yarn test --watch",
     "test:staged": "yarn test --findRelatedTests $(git status -s | grep -E '.(spec|test).' | awk '{print $2}')",
     "test:cov": "yarn test --coverage"

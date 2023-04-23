@@ -1,18 +1,11 @@
 import { type Authentication } from '@/domain/usecases'
 import { InvalidCredentialsError, UnexpectedError } from '@/domain/errors'
 import { RemoteAuthentication } from '@/data/usecases'
-import { HttpStatusCode } from '@/data/protocols'
+import { type DefaultHeaders, HttpStatusCode } from '@/data/protocols'
 import { HttpPostClientSpy } from '@/tests/data/mocks'
 import { mockAuthenticationParams, mockAuthenticationResult } from '@/tests/domain/mocks'
 import { faker } from '@faker-js/faker'
 
-type DefaultHeaders = {
-  Accept?: string
-  'Content-Type'?: string
-  'Access-Control-Allow-Origin'?: string
-  'Access-Control-Allow-Headers'?: string
-  'Access-Control-Allow-Methods'?: string
-}
 interface SutTypes {
   sut: RemoteAuthentication
   httpPostClientSpy: HttpPostClientSpy<Authentication.Params, DefaultHeaders, Authentication.Result>

@@ -1,14 +1,7 @@
 import { type Authentication } from '@/domain/usecases'
 import { InvalidCredentialsError, UnexpectedError } from '@/domain/errors'
-import { HttpStatusCode, type HttpPostClient } from '@/data/protocols'
+import { HttpStatusCode, type HttpPostClient, type DefaultHeaders } from '@/data/protocols'
 
-type DefaultHeaders = {
-  Accept?: string
-  'Content-Type'?: string
-  'access-control-allow-origin'?: string
-  'access-control-allow-headers'?: string
-  'access-control-allow-methods'?: string
-}
 export class RemoteAuthentication implements Authentication {
   constructor (private readonly url: string, private readonly httpPostClient: HttpPostClient<Authentication.Params, DefaultHeaders, Authentication.Result>) {}
   async auth (params: Authentication.Params): Promise<Authentication.Result> {
