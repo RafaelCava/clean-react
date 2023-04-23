@@ -7,9 +7,7 @@ const Input: React.FC<Props> = (props: Props) => {
   const { state, setState } = useContext(Context) as any
   /* istanbul ignore next */
   const error = state?.[`${props.name}Error`]
-  /* istanbul ignore next */
   const enableInput = (e: React.FocusEvent<HTMLInputElement>): void => {
-    /* istanbul ignore next */
     e.target.readOnly = false
   }
 
