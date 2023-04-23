@@ -1,12 +1,12 @@
-import { router } from '@/presentation/components'
+import { Router } from '@/presentation/components'
 import React from 'react'
 import ReactDom from 'react-dom'
-import { BrowserRouter, RouterProvider } from 'react-router-dom'
 import '../presentation/styles/globals.scss'
+import { makeLogin } from './factories/pages/login-factory'
 
 ReactDom.render(
-  <BrowserRouter>
-    <RouterProvider router={router} />
-  </BrowserRouter>,
+  <Router
+    makeLogin={makeLogin}
+  />,
   document.getElementById('main')
 )

@@ -6,13 +6,20 @@ import { HttpPostClientSpy } from '@/tests/data/mocks'
 import { mockAuthenticationParams, mockAuthenticationResult } from '@/tests/domain/mocks'
 import { faker } from '@faker-js/faker'
 
+type DefaultHeaders = {
+  Accept?: string
+  'Content-Type'?: string
+  'Access-Control-Allow-Origin'?: string
+  'Access-Control-Allow-Headers'?: string
+  'Access-Control-Allow-Methods'?: string
+}
 interface SutTypes {
   sut: RemoteAuthentication
-  httpPostClientSpy: HttpPostClientSpy<Authentication.Params, null, Authentication.Result>
+  httpPostClientSpy: HttpPostClientSpy<Authentication.Params, DefaultHeaders, Authentication.Result>
 }
 
 const makeSut = (url: string = faker.internet.url()): SutTypes => {
-  const httpPostClientSpy = new HttpPostClientSpy<Authentication.Params, null, Authentication.Result>()
+  const httpPostClientSpy = new HttpPostClientSpy<Authentication.Params, DefaultHeaders, Authentication.Result>()
   const sut = new RemoteAuthentication(url, httpPostClientSpy)
   return {
     sut,
