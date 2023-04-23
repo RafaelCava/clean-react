@@ -1,12 +1,11 @@
 import { Router } from '@/presentation/components'
 import React from 'react'
-import ReactDom from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import '../presentation/styles/globals.scss'
 import { makeLogin } from './factories/pages/login-factory'
 
-ReactDom.render(
+createRoot(document.getElementById('main') as HTMLElement).render(
   <Router
     makeLogin={makeLogin}
-  />,
-  document.getElementById('main')
+  />
 )
