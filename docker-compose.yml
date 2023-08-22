@@ -10,8 +10,10 @@ services:
       context: .
       dockerfile: ./.docker/dockerfiles/Dockerfile
     container_name: clean-react
-    # entrypoint: sh ./.docker/entrypoint.sh
-    restart: always
+    entrypoint: sh ./.docker/entrypoint.sh
+    restart: on-failure
+    environment:
+      NODE_ENV: development
     tty: true
     networks:
       - kong-fc

@@ -2,6 +2,6 @@
 
 yarn install
 
-yarn husky
+yarn husky install
 
 yarn dev
